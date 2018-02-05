@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="mcomm.com.musicapp.activities.CategoryActivity"
+    tools:showIn="@layout/activity_category">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/image_holder"
+        android:layout_width="match_parent"
+        android:layout_height="170dp" />
+
+    <LinearLayout
+        android:id="@+id/indicators"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/image_holder"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/in1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/indicator_selected"/>
+        <ImageView
+            android:id="@+id/in2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/indicator_unselected"/>
+        <ImageView
+            android:id="@+id/in3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/indicator_unselected"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/top_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/indicators"
+        android:fontFamily="@font/poppins"
+        android:paddingStart="16dp"
+        android:text="Popular"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextLight"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/top_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_header"
+        android:layout_marginTop="10dp"
+        android:paddingStart="16dp"
+        tools:listitem="@layout/category_list_item" />
+
+    <TextView
+        android:id="@+id/bottom_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_list"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:paddingStart="16dp"
+        android:text="My Playlists"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextLight"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bottom_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_header"
+        android:layout_marginTop="10dp"
+        android:paddingStart="16dp"
+        tools:listitem="@layout/category_list_item" />
+
+    <TextView
+        android:id="@+id/vert_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_list"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:paddingStart="16dp"
+        android:text="New This Week"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextLight"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_list"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:paddingEnd="16dp"
+        android:text="View All"
+        android:textColor="@color/colorTextLight"
+        android:textSize="12sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/vert_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/vert_header"
+        android:paddingStart="16dp"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

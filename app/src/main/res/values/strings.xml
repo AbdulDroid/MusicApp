@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MusicApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_info">Don’t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="username_email">Username or Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Login</string>
+    <string name="sign_up_info">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Re-type Password</string>
+    <string name="title_activity_category">CategoryActivity</string>
+    <string name="title0">FELA KUTI: REBORN</string>
+    <string name="subtitle0">Revised intimate music sessions with Fela and his Queens</string>
+    <string name="title1">WEEKLY MIXES: FEATURING DAVIDO</string>
+    <string name="title2">BLACK MAGIC: LIVE</string>
+    <string name="subtitle1">Selections from the hottest jams this year</string>
+    <string name="subtitle2">Live rendition of Yemi Alade’s Black Magic Album</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search Songs</string>
+</resources>
