@@ -48,7 +48,7 @@
                     android:id="@+id/current_song_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="2"
+                    android:singleLine="true"
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/colorTextLight"
@@ -84,12 +84,14 @@
                     android:textOn=""
                     android:textOff=""/>
 
-                <ImageView
+                <ToggleButton
                     android:id="@+id/repeat"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:background="@drawable/repeat"
                     android:layout_marginStart="12dp"
-                    app:srcCompat="@drawable/repeat" />
+                    android:textOn=""
+                    android:textOff=""/>
 
                 <ImageView
                     android:id="@+id/like"
@@ -104,11 +106,11 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="12dp"
                     android:background="@drawable/dark">
-                    <ToggleButton
+                    <ImageView
                         android:id="@+id/play_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/play_pause"
+                        android:layout_width="18dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/play_icon"
                         android:layout_centerInParent="true"/>
                 </RelativeLayout>
 

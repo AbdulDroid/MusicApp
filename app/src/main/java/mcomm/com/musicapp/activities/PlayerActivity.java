@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import org.parceler.Parcels;
 
@@ -32,11 +34,13 @@ public class PlayerActivity extends AppCompatActivity {
     @BindView(R.id.current_song_title) TextView title;
     @BindView(R.id.current_song_artist) TextView artist;
     @BindView(R.id.current_song_image) ImageView songImage;
-    @BindView(R.id.shuffle) ImageView shuffleBtn;
-    @BindView(R.id.repeat) ImageView repeatBtn;
+    @BindView(R.id.shuffle) ToggleButton shuffleBtn;
+    @BindView(R.id.repeat) ToggleButton repeatBtn;
     @BindView(R.id.like) ImageView likeBtn;
     @BindView(R.id.next) ImageView nextBtn;
     @BindView(R.id.seek_bar) SeekBar seekBar;
+    @BindView(R.id.play) RelativeLayout play;
+    @BindView(R.id.play_icon) ToggleButton playButton;
     AppUtils appUtils;
     Unbinder unbind;
     @Override
