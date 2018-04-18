@@ -3,16 +3,12 @@ package mcomm.com.musicapp.activities;
 import android.Manifest;
 import android.app.SearchManager;
 import android.content.ComponentName;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.IBinder;
-import android.os.ParcelFileDescriptor;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +21,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -34,14 +29,12 @@ import android.widget.ToggleButton;
 
 import org.parceler.Parcels;
 
-import java.io.FileDescriptor;
 import java.util.ArrayList;
 
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import mcomm.com.musicapp.MusicControl;
 import mcomm.com.musicapp.MusicService;
 import mcomm.com.musicapp.R;
 import mcomm.com.musicapp.Song;
@@ -81,7 +74,7 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
     @BindView(R.id.next)
     ImageView nextBtn;
     @BindView(R.id.play_icon)
-    ImageView playImage;
+    ToggleButton playImage;
     @BindView(R.id.seek_bar)
     SeekBar seekBar;
     SongAdapter adapter;
@@ -103,8 +96,6 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
         playButton.setOnClickListener(this);
         nextBtn.setOnClickListener(this);
         songImage.setOnClickListener(this);
-        playImage.setImageResource(R.drawable.play_icon);
-        playImage.setTag(R.drawable.play_icon);
         songs = new ArrayList<>();
         checkPermission();
         vert1.setLayoutManager(new LinearLayoutManager(this));
@@ -139,6 +130,7 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
             }
         });
         if (songs.size() > 0)
+            this.song = songs.get(0);
             setViews(songs.get(0));
     }
 
@@ -269,6 +261,18 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
         }
     }
 
+    private void play() {
+        if (playbackPaused)
+            playbackPaused = false;
+        musicSrv.playCont();
+    }
+
+    private void pause(){
+        if (!playbackPaused)
+            playbackPaused = true;
+        musicSrv.pauseSong();
+    }
+
     private void playNext(){
         int pos = musicSrv.playNext();
         if (playbackPaused){
@@ -350,17 +354,12 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.play:
-                Integer integer = (Integer) playImage.getTag();
-                integer = integer == null ? 0 : integer;
-                Log.e("Play", integer.toString());
-                if (integer == R.drawable.play_icon) {
+                if (playImage.isChecked()) {
                     musicSrv.playCont();
-                    playImage.setImageResource(R.drawable.pause);
-                    playImage.setTag(R.drawable.pause);
-                } else if (integer == R.drawable.pause) {
+                    playImage.setChecked(false);
+                } else {
                     musicSrv.pauseSong();
-                    playImage.setImageResource(R.drawable.play_icon);
-                    playImage.setTag(R.drawable.play_icon);
+                    playImage.setChecked(true);
                 }
                 break;
             case R.id.next:

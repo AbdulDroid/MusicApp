@@ -8,7 +8,6 @@
     android:paddingBottom="30dp"
     android:paddingStart="24dp"
     android:paddingEnd="24dp"
-    android:background="@color/colorPrimary"
     tools:context="mcomm.com.musicapp.fragments.LoginFragment">
 
     <ImageView
