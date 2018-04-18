@@ -21,6 +21,7 @@ import mcomm.com.musicapp.activities.PlayListActivity;
 
 /**
  * Created by apple on 03/02/2018.
+ *
  */
 
 public class MusicService extends Service implements
@@ -123,9 +124,16 @@ public class MusicService extends Service implements
     }
 
     public void playCont(){
-        if (!player.isPlaying()){
-            player.seekTo(position);
-            go();
+        try {
+            if (!player.isPlaying()) {
+                player.seekTo(position);
+                go();
+            } else {
+                pauseSong();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            playSong();
         }
     }
 
