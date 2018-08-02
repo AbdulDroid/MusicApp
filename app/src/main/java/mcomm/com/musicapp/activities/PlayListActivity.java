@@ -55,7 +55,6 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
     RelativeLayout playButton;
     private SearchView searchView;
     public static final int WRITE = 10;
-    private boolean playing = false;
     @BindView(R.id.duration)
     TextView duration;
     @BindView(R.id.current_duration)
@@ -69,13 +68,13 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
     @BindView(R.id.shuffle)
     ToggleButton shuffleBtn;
     @BindView(R.id.repeat)
-    ToggleButton repeatBtn;
+    ImageView repeatBtn;
     @BindView(R.id.like)
     ImageView likeBtn;
     @BindView(R.id.next)
     ImageView nextBtn;
     @BindView(R.id.play_icon)
-    ImageView playImage;
+    ToggleButton playImage;
     @BindView(R.id.seek_bar)
     SeekBar seekBar;
     SongAdapter adapter;
@@ -95,7 +94,6 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
         repeatBtn.setOnClickListener(this);
         shuffleBtn.setOnClickListener(this);
         playButton.setOnClickListener(this);
-        playImage.setOnClickListener(this);
         nextBtn.setOnClickListener(this);
         songImage.setOnClickListener(this);
         songs = new ArrayList<>();
@@ -356,13 +354,12 @@ public class PlayListActivity extends AppCompatActivity implements SongAdapter.L
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.play:
-            case R.id.play_icon:
-                if (playing) {
-                    playImage.setImageResource(R.drawable.play_icon);
-                    musicSrv.pauseSong();
-                } else {
+                if (playImage.isChecked()) {
                     musicSrv.playCont();
-                    playImage.setImageResource(R.drawable.pause);
+                    playImage.setChecked(false);
+                } else {
+                    musicSrv.pauseSong();
+                    playImage.setChecked(true);
                 }
                 break;
             case R.id.next:

@@ -217,7 +217,7 @@ public class MusicService extends Service implements
                 .setTicker(songTitle)
                 .setOngoing(true)
                 .setContentTitle("Playing")
-  .setContentText(songTitle);
+                .setContentText(songTitle);
         Notification not = builder.build();
 
         startForeground(NOTIFY_ID, not);

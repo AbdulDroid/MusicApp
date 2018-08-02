@@ -106,11 +106,13 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="12dp"
                     android:background="@drawable/dark">
-                    <ImageView
+                    <ToggleButton
                         android:id="@+id/play_icon"
                         android:layout_width="18dp"
                         android:layout_height="24dp"
-                        app:srcCompat="@drawable/play_icon"
+                        android:background="@drawable/play_pause"
+                        android:textOn=""
+                        android:textOff=""
                         android:layout_centerInParent="true"/>
                 </RelativeLayout>
 
